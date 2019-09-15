@@ -100,7 +100,7 @@ $ uname -r
 ## CUDAのinstall (CUDA Toolkitのinstall)
 0. tensorflowのサイトからsupportしているCUDAのversionをinstallする
     以下のtensorflow公式のTested source configurationsの項目を見てtensorflowがsupportしているCUDA Toolkitをinstallする \
-    [installing TensorFlow from Sources](https://www.tensorflow.org/install/install_sources#common_installation_problems) \
+    [installing TensorFlow from Sources](https://www.tensorflow.org/install/install_sources#common_installation_problems) 
 
 1. すでにCUDAがinstallされていないかcheck
     ```
@@ -114,7 +114,7 @@ $ uname -r
     sudo apt-get --purge remove "cuda-*"
     ```
     - .runでインストールした場合
-    (この方法でのuninstallをしたことがないのでこれでできるのかはわからない) \
+    (この方法でのuninstallをしたことがないのでこれでできるのかはわからない) 
     ```
     /usr/local/cuda-*.*/bin/uninstall
     ```
@@ -122,7 +122,7 @@ $ uname -r
 
 3. debファイルのdownload 
     [CUDA Toolkit 9.0 Downloads](https://developer.nvidia.com/cuda-90-download-archive) \
-    上記のnvidiaの公式サイトで以下の順で操作しdebファイルのdownload URLを取得する \ 
+    上記のnvidiaの公式サイトで以下の順で操作しdebファイルのdownload URLを取得する  
     ```
     Linux > x86_64 > Ubuntu > 16.04 > deb (network)
     ```
@@ -141,7 +141,7 @@ $ uname -r
     $ sudo apt-get install cuda-9.0
     ```
     **'cuda-version'とversionの指定をしないと最新のversionがinstallされてしまうので注意** \
-    ref : [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory (when trying to run object detection)](https://github.com/tensorflow/tensorflow/issues/16750) \
+    ref : [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory (when trying to run object detection)](https://github.com/tensorflow/tensorflow/issues/16750) 
 
 6. pathの設定
     bashの場合.bashrcにzshの場合.zshrcに以下を書く
@@ -244,7 +244,7 @@ ref : [Ubuntu 16.04 + CUDA 9.1 + cuDNN 7.0.5 + Tensorflow 1.4.0](http://tyokota.
 
 ## tensorflow-gpuのinstall
 pipでtensorflowのgpu版 tenosrflow-gpuをinstallしないとプログラムを実行してもGPUを使ってくれない． \
-普通にpipでinstall \
+普通にpipでinstall 
 ```
 $ pip install tensorflow-gpu
 ```
@@ -316,7 +316,7 @@ ref : [Python: Keras/TensorFlow の学習を GPU で高速化する (Ubuntu 16.0
 上記のサイトで示されているnvidia help内の \
 <https://devtalk.nvidia.com/default/topic/1000340/cuda-setup-and-installation/-quot-nvidia-smi-has-failed-because-it-couldn-t-communicate-with-the-nvidia-driver-quot-ubuntu-16-04/4> \
 のnvidiaが回答している通りのやり方でも解決しない． \
-cudaもすべて再install必要があるかも... \
+cudaもすべて再install必要があるかも... 
 
 この記事も参考になるかもしれない... \
 [CUDA9.1の環境でTensorFlowをインストールする](http://sanshonoki.hatenablog.com/entry/2018/01/29/235021)
@@ -327,7 +327,7 @@ cudaもすべて再install必要があるかも... \
 - [何かをapt-get upgrade したら nvidia-smi でエラーを出すようになった](https://qiita.com/ikeyasu/items/dd32c4836a58cf697d78)のlyakaapさんのコメントを参照
 - [Ubuntuでnvidiaドライバーが動作しない](https://qiita.com/bohemian916/items/7637b9b0b3494f447c03)
 このサイトを参考に \
-ubuntuのカーネルを変えたら治った． \
+ubuntuのカーネルを変えたら治った． 
 
 /etc/default/grubの
 ```
