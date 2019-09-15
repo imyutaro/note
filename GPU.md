@@ -1,6 +1,6 @@
 # GPU
-CUDAなどのinstallなどのGPUの設定のMemo
-2018/02/18での手順．変わっている場合があるのでその都度確認が必要．
+CUDAなどのinstallなどのGPUの設定のMemo 
+2018/02/18での手順．変わっている場合があるのでその都度確認が必要． 
 
 ### 目的
 - **GPUに適したnvidia driverのinstall**
@@ -19,7 +19,7 @@ $ uname -r
 ```
 
 ## nvidiaのdriverのinstall
-搭載しているGPUに適したdriverのinstall
+搭載しているGPUに適したdriverのinstall 
 [](GPUのdriverには依存関係がないので気にせずGPUに対応するdriverをinstallする)
 
 0. グラフィックカードを刺してGPUをUbuntu16.04 LTSが認識することを確認
@@ -99,8 +99,8 @@ $ uname -r
 
 ## CUDAのinstall (CUDA Toolkitのinstall)
 0. tensorflowのサイトからsupportしているCUDAのversionをinstallする
-    以下のtensorflow公式のTested source configurationsの項目を見てtensorflowがsupportしているCUDA Toolkitをinstallする
-    [installing TensorFlow from Sources](https://www.tensorflow.org/install/install_sources#common_installation_problems)
+    以下のtensorflow公式のTested source configurationsの項目を見てtensorflowがsupportしているCUDA Toolkitをinstallする \
+    [installing TensorFlow from Sources](https://www.tensorflow.org/install/install_sources#common_installation_problems) \
 
 1. すでにCUDAがinstallされていないかcheck
     ```
@@ -114,19 +114,19 @@ $ uname -r
     sudo apt-get --purge remove "cuda-*"
     ```
     - .runでインストールした場合
-    (この方法でのuninstallをしたことがないのでこれでできるのかはわからない)
+    (この方法でのuninstallをしたことがないのでこれでできるのかはわからない) \
     ```
     /usr/local/cuda-*.*/bin/uninstall
     ```
     ref : [Ubuntu 14.04にCuda 6.5をインストール](https://qiita.com/tshimba/items/69c17a4b42345d7bf895)
 
-3. debファイルのdownload
-    [CUDA Toolkit 9.0 Downloads](https://developer.nvidia.com/cuda-90-download-archive)
-    上記のnvidiaの公式サイトで以下の順で操作しdebファイルのdownload URLを取得する
+3. debファイルのdownload 
+    [CUDA Toolkit 9.0 Downloads](https://developer.nvidia.com/cuda-90-download-archive) \
+    上記のnvidiaの公式サイトで以下の順で操作しdebファイルのdownload URLを取得する \ 
     ```
     Linux > x86_64 > Ubuntu > 16.04 > deb (network)
     ```
-    得られたURLからdebファイルをdownloadする
+    得られたURLからdebファイルをdownloadする 
     ```
     sudo wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
     ```
@@ -140,8 +140,8 @@ $ uname -r
     ```
     $ sudo apt-get install cuda-9.0
     ```
-    **'cuda-version'とversionの指定をしないと最新のversionがinstallされてしまうので注意**
-    ref : [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory (when trying to run object detection)](https://github.com/tensorflow/tensorflow/issues/16750)
+    **'cuda-version'とversionの指定をしないと最新のversionがinstallされてしまうので注意** \
+    ref : [ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory (when trying to run object detection)](https://github.com/tensorflow/tensorflow/issues/16750) \
 
 6. pathの設定
     bashの場合.bashrcにzshの場合.zshrcに以下を書く
@@ -167,7 +167,7 @@ $ uname -r
     ```
 
 ## cuDNNのinstall
-cuDNNのインストールには，あらかじめNVIDIAのサイトでデベロッパー登録が必要になる．登録を済ませるとcuDNNをダウンロードできるようになる．
+cuDNNのインストールには，あらかじめNVIDIAのサイトでデベロッパー登録が必要になる．登録を済ませるとcuDNNをダウンロードできるようになる． \
 <https://developer.nvidia.com/rdp/cudnn-download>
 1. packageのdownload
     以下の順で選択してpackageをdownload
@@ -208,7 +208,7 @@ gcc version 4.8.5 (Ubuntu 4.8.5-4ubuntu2)
 ref : [Ubuntu 14.04にCuda 6.5をインストール](https://qiita.com/tshimba/items/69c17a4b42345d7bf895)
 
 ## libcupti-devのinstall
-いるかわからないけど．．．The CUDA Profiling Tools Interface もインストールしておく．
+いるかわからないけど...The CUDA Profiling Tools Interface もインストールしておく．
 ```
 $ sudo apt-get -y install libcupti-dev
 $ sudo reboot
@@ -216,7 +216,7 @@ $ sudo reboot
 ref : [Python: Keras/TensorFlow の学習を GPU で高速化する (Ubuntu 16.04 LTS)](http://blog.amedama.jp/entry/2017/03/13/123742)
 
 ## Bazelのinstall
-これもいるかわからないけど．．．tensorflow公式のTested source configurationsの項目に書いてあるから一応．．．
+これもいるかわからないけど...tensorflow公式のTested source configurationsの項目に書いてあるから一応...
 
 ```
 $ sudo apt-get install openjdk-8-jdk
@@ -243,8 +243,8 @@ Build timestamp as int: 1518685349351
 ref : [Ubuntu 16.04 + CUDA 9.1 + cuDNN 7.0.5 + Tensorflow 1.4.0](http://tyokota.hatenablog.com/entry/2017/12/20/170451)
 
 ## tensorflow-gpuのinstall
-pipでtensorflowのgpu版 tenosrflow-gpuをinstallしないとプログラムを実行してもGPUを使ってくれない．
-普通にpipでinstall
+pipでtensorflowのgpu版 tenosrflow-gpuをinstallしないとプログラムを実行してもGPUを使ってくれない． \
+普通にpipでinstall \
 ```
 $ pip install tensorflow-gpu
 ```
@@ -312,13 +312,13 @@ ref : [Python: Keras/TensorFlow の学習を GPU で高速化する (Ubuntu 16.0
 ----
 
 ## nvidia-smiができない問題(2018/04/08確認)
-[Ubuntuでnvidiaドライバーが動作しない](https://qiita.com/bohemian916/items/7637b9b0b3494f447c03)
-上記のサイトで示されているnvidia help内の
-https://devtalk.nvidia.com/default/topic/1000340/cuda-setup-and-installation/-quot-nvidia-smi-has-failed-because-it-couldn-t-communicate-with-the-nvidia-driver-quot-ubuntu-16-04/4
-のnvidiaが回答している通りのやり方でも解決しない．
-cudaもすべて再install必要があるかも．．．
+[Ubuntuでnvidiaドライバーが動作しない](https://qiita.com/bohemian916/items/7637b9b0b3494f447c03) \
+上記のサイトで示されているnvidia help内の \
+<https://devtalk.nvidia.com/default/topic/1000340/cuda-setup-and-installation/-quot-nvidia-smi-has-failed-because-it-couldn-t-communicate-with-the-nvidia-driver-quot-ubuntu-16-04/4> \
+のnvidiaが回答している通りのやり方でも解決しない． \
+cudaもすべて再install必要があるかも... \
 
-この記事も参考になるかもしれない．．．
+この記事も参考になるかもしれない... \
 [CUDA9.1の環境でTensorFlowをインストールする](http://sanshonoki.hatenablog.com/entry/2018/01/29/235021)
 
 とりあえずは放置する(めんどくさいから)
@@ -326,10 +326,10 @@ cudaもすべて再install必要があるかも．．．
 ### 2018年5月2日追記
 - [何かをapt-get upgrade したら nvidia-smi でエラーを出すようになった](https://qiita.com/ikeyasu/items/dd32c4836a58cf697d78)のlyakaapさんのコメントを参照
 - [Ubuntuでnvidiaドライバーが動作しない](https://qiita.com/bohemian916/items/7637b9b0b3494f447c03)
-このサイトを参考に
-ubuntuのカーネルを変えたら治った．
+このサイトを参考に \
+ubuntuのカーネルを変えたら治った． \
 
-/etc/default/grubの
+/etc/default/grubの
 ```
 GRUB_DEFAULT=0
 ```
@@ -341,7 +341,7 @@ GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.4.0-112-generic"
 
 ### 2018年5月4日追記
 
-2018年5月2日のやり方を試したがそもそも.runでdriverのinstallができないようなのでdriverのinstall自体を失敗しているせいで```nvidia-smi```ができないっぽい．ubuntuのkernelは無事変更することはできている．kernelの問題は解決しているはず．
+2018年5月2日のやり方を試したがそもそも.runでdriverのinstallができないようなのでdriverのinstall自体を失敗しているせいで```nvidia-smi```ができないっぽい．ubuntuのkernelは無事変更することはできている．kernelの問題は解決しているはず．
 
 ----
 
