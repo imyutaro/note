@@ -1,16 +1,18 @@
-## addしたあとのcommit前に差分を確認する方法
+## how to check diff between add and commit
+how to check diff after adding before committing 
+addしたあとのcommit前に差分を確認する方法
 ```bash
 $ git diff --cached filename
 or
 $ git dif --cached .
 ```
 
-## addを取り消す
+## hoe to cancel git add
 ```bash
 $ git reset HEAD filename
 ```
 
-## how to do git pull force
+## how to git pull force
 ```bash
 $ git fetch
 $ git reset --hard origin/branch_name
