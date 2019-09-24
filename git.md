@@ -19,12 +19,22 @@ $ git reset --hard origin/branch_name
 ```
 
 ## how to check diff between local and remote
+how to check diff before pull. \
+After doing a git fetch, do a `git log HEAD..origin/master` to show the log entries between your last common commit and the origin's master branch.
+To show the diffs, use either `git log -p HEAD..origin/master` to show each patch,
+or `git diff HEAD...origin/master` (three dots not two) to show a single diff.
 ```bash
-$ git diff HEAD remote_name/branch_name
+$ git fetch
+$ git diff HEAD remote_name/branch_name # to show diff between local and remote
+$ git log -p HEAD..remote_name/branch_name # to show log
+$ git log HEAD...remote__name/branch_name # to show a single diff
 
 # example
+$ git fetch
 $ git diff HEAD origin/master
 ```
+ref:
+- [version control - How to preview git-pull without doing fetch? - Stack Overflow](https://stackoverflow.com/questions/180272/how-to-preview-git-pull-without-doing-fetch)
 
 ## how to check diff after commit
 ```bash
