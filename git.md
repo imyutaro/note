@@ -38,3 +38,13 @@ $ git diff remote_name/branch_name HEAD
 # example
 $ git diff origin/master HEAD 
 ```
+
+## how to git pull force
+```bash
+$ git fetch
+$ git reset --hard origin/branch_name
+
+# example
+$ git fetch
+$ git reset --hard origin/master
+```
