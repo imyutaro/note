@@ -16,6 +16,10 @@ $ git reset HEAD filename
 ```bash
 $ git fetch
 $ git reset --hard origin/branch_name
+
+# example
+$ git fetch
+$ git reset --hard origin/master
 ```
 
 ## how to check diff between local and remote
@@ -49,12 +53,3 @@ $ git diff remote_name/branch_name HEAD
 $ git diff origin/master HEAD 
 ```
 
-## how to git pull force
-```bash
-$ git fetch
-$ git reset --hard origin/branch_name
-
-# example
-$ git fetch
-$ git reset --hard origin/master
-```
