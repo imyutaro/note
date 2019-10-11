@@ -53,3 +53,11 @@ $ git diff remote_name/branch_name HEAD
 $ git diff origin/master HEAD 
 ```
 
+## how to change commit message after commit
+```bash
+$ git commit --amend -m "commit message"
+
+# example
+$ git commit --amend -m "change commit message"
+```
+ref: [Gitのコミットメッセージを後から変更する方法をわかりやすく書いてみた | 株式会社グランフェアズ](https://www.granfairs.com/blog/staff/git-commit-fix)
