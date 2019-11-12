@@ -8,7 +8,7 @@ addした後，commit前に差分を確認する方法
 ```bash
 git diff --cached filename
 or
-git dif --cached .
+git diff --cached .
 ```
 
 ## how to cancel git add
