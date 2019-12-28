@@ -232,6 +232,3 @@ bashアプリケーションをテストできれば実質，C言語のテスト
 
 * References
   * [Bashアプリケーションをテストする | POSTD](https://postd.cc/bash%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%83%86%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B/)
-
-
-felicity official
