@@ -5,7 +5,7 @@ Article about Hydra is [this](https://medium.com/pytorch/hydra-a-fresh-look-at-c
 
 ## Hydra使い方
 
-基本的には[このmediumの記事の日本語訳](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710)と[hydraのドキュメント](https://hydra.cc/docs/intro)をもとに書く．
+基本的には[このmediumの記事](https://medium.com/pytorch/hydra-a-fresh-look-at-configuration-for-machine-learning-projects-50583186b710)と[hydraのドキュメント](https://hydra.cc/docs/intro)をもとに書く．
 
 ### インストール
 
@@ -37,6 +37,7 @@ from omegaconf import DictConfig
 @hydra.main(config_path="config.yaml")
 def my_app(cfg: DictConfig) -> None:
     print(cfg.pretty())
+    print(type(cfg))
     print(cfg["dataset"])
 
 
@@ -52,6 +53,7 @@ dataset:
   name: imagenet
   path: /datasets/imagenet
 
+<class 'omegaconf.dictconfig.DictConfig'>
 {'name': 'cifar10', 'path': '/datasets/cifar10'}
 ```
 
@@ -59,7 +61,8 @@ configファイルの内容 ↑ が出力される．\
 このconfigファイルの内容をconfigファイルを編集せずにコマンドラインから変更できる．\
 例えば，`python my_app.py dataset.path=/datasets/imagenet20k`を実行したら
 
-```text
+```console
+$ python my_app.py dataset.path=/datasets/imagenet20k
 dataset:
   name: imagenet
   path: /datasets/imagenet20k
@@ -83,7 +86,7 @@ datasetのpathが変わってるけど，configファイルの中身は変わっ
             └── my_app.log
 ```
 
-#### 複数のconfigファイルを利用する，他のyamlファイルの読み込み
+#### 複数のconfigファイルを利用する，他のconfigファイルの読み込み
 
 同様に[repo](https://github.com/omry/hydra-article-code)のcompositionフォルダ下をもとに説明する．\
 複数のデータセットに対してそれぞれの別のconfigファイルを使いたい場合は
@@ -98,9 +101,10 @@ datasetのpathが変わってるけど，configファイルの中身は変わっ
 └── my_app.py
 ```
 
-のようなディレクトリ構造で`my_app.py`で`/conf/config.yaml`を指定して，`python my_app.py`を実行すると
+のようなディレクトリ構造で`my_app.py`で`config_path="/conf/config.yaml"`を指定して，`python my_app.py`を実行すると
 
-```text
+```console
+$ python my_app.py
 dataset:
   name: cifar10
   path: /datasets/cifar10
@@ -111,7 +115,7 @@ dataset:
 ```yaml
 # config.yaml
 defaults:
-  - dataset: cifar10
+  - dataset: cifar10 # datasetディレクトリ内にあるcifar10.yamlをデフォルトとする
 ```
 
 ```yaml
@@ -124,12 +128,12 @@ dataset:
 <!--
 TODO: Write how to use multiple yaml config
 -->
-基本的にはディレクトリごとにグルーピングしていき，読み込んでいく．例えば，
+ディレクトリごとにconfigをグルーピングしていき，読み込むかたちが基本っぽい．
 
 ```yaml
 ```
 
-グルーピングしたくない場合は単純に
+グルーピングしないで(余計なディレクトリを作りたくない)単純に他のconfigファイルを読み込みたい場合は単純に
 
 ```yaml
 # config.yaml
