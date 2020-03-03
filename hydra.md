@@ -36,7 +36,6 @@ def my_app(cfg: DictConfig) -> None:
     print(type(cfg))
     print(cfg["dataset"])
 
-
 if __name__ == "__main__":
     my_app()
 ```
@@ -70,7 +69,7 @@ datasetのpathが変わってるけど，configファイルの中身は変わっ
 実行したら実行したディレクトリ下に`outputs`ディレクトリができて，`outputs`ディレクトリ下に実行した日付，時刻でディレクトリができ，実行したときに参照したyamlファイルなどが`.hydra`ディレクトリ下にコピーされている．
 
 ```text
-.
+./
 ├── config.yaml
 ├── my_app.py
 └── outputs
@@ -89,7 +88,7 @@ datasetのpathが変わってるけど，configファイルの中身は変わっ
 複数のデータセットに対してそれぞれの別のconfigファイルを使いたい場合は
 
 ```text
-.
+./
 ├── conf
 │   ├── config.yaml
 │   └── dataset
