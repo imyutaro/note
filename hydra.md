@@ -35,6 +35,7 @@ def my_app(cfg: DictConfig) -> None:
     print(cfg.pretty())
     print(type(cfg))
     print(cfg["dataset"])
+    print(cfg.dataset)
 
 if __name__ == "__main__":
     my_app()
@@ -49,6 +50,7 @@ dataset:
   path: /datasets/imagenet
 
 <class 'omegaconf.dictconfig.DictConfig'>
+{'name': 'cifar10', 'path': '/datasets/cifar10'}
 {'name': 'cifar10', 'path': '/datasets/cifar10'}
 ```
 
@@ -356,17 +358,17 @@ optim:
 ```
 
 ```python
-if cfg["optim"]["type"]=="sgd":
-    lr=cfg["optim"]["params"]["lr"]
-    momentum=cfg["optim"]["params"]["momentum"]
-    weight_decay=cfg["optim"]["params"]["weight_decay"]
+if cfg.optim.type=="sgd":
+    lr=cfg.optim.params.lr
+    momentum=cfg.optim.params.momentum
+    weight_decay=cfg.optim.params.weight_decay
     optimizer = optim.SGD(model.parameters(), \
                           lr=lr, \
                           momentum=momentum, \
                           weight_decay=weight_decay)
-elif cfg["optim"]["type"]=="adam":
-    lr=cfg["optim"]["params"]["lr"]
-    weight_decay=cfg["optim"]["params"]["weight_decay"]
+elif cfg.optim.type=="adam":
+    lr=cfg.optim.params.lr
+    weight_decay=cfg.optim.params.weight_decay
     optimizer = optim.Adam(model.parameters(), \
                             lr=lr, \
                             weight_decay=weight_decay)
