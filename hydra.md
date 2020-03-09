@@ -289,7 +289,7 @@ hydraではloggingのレベルはデフォルトでは`INFO`レベル．`hydra.v
 
 #### Loggingのカスタマイズ
 
-以下の`hydra/job_logging/formatters/simple/format`で指定できる．
+以下の`hydra.job_logging.formatters.simple.format`で指定できる．
 
 ```yaml
 # hydra_basic.yaml
