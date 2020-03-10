@@ -5,6 +5,7 @@
 * clang.md \
   C言語のメモ
 * cunit.md \
+  C言語の単体テストのライブラリCUnitのメモ
 * docker.md \
   Dockerについてのメモ
 * git.md \
