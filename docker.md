@@ -1,7 +1,137 @@
 
-# Docker
+# Docker Note
 
-## HostOSの環境変数をdocker-compose.yml, Dockerfileに渡す方法
+## 基本的な使い方
+
+### イメージの確認
+
+```console
+docker images
+```
+
+でそのPC内にあるdockerイメージを確認できる．
+
+### イメージのビルド
+
+`Dockerfile`のあるディレクトリで
+
+```console
+docker build
+```
+
+を実行すると`Dockerfile`をもとにコンテナをビルドする．
+`fオプション`を使うとDockerfileの指定ができる．
+`tオプション`を使うとイメージのタグの名前を指定できる．
+
+```console
+docker build -f Dockerfile.gpu -t test
+```
+
+なんで，上記のコマンドは`Dockerfile.gpu`というDockerfileをもとに`test`というタグを付けてイメージをビルドすると言う意味．
+
+### コンテナを起動してコマンドをコンテナ内で実行
+
+イメージのビルドと同様に`Dockerfile`のあるディレクトリで
+
+```console
+docker run bash
+```
+
+を実行するとコンテナを起動してコマンド`bash`を起動したコンテナ内で実行できる．
+
+オプション(フラグ？)はたくさんあるが基本的に自分が使うのは以下のコマンド
+
+```text
+gpus  : GPUを使うかどうか
+name  : $NAME
+init  :
+p     : $PORT:$PORT
+v     : $PWD/:/home/$USER_NAME/$NAME/
+tid   : $NAME
+```
+
+* [GPUオプションについて](https://docs.docker.com/config/containers/resource_constraints/#gpu)
+
+```console
+docker run --gpus all \
+           --name $NAME \
+           --init \
+           -p $PORT:$PORT \
+           -v $PWD/:/home/$USER_NAME/$NAME/ \
+           -tid $NAME \
+           jupyter lab --no-browser --port=$PORT --ip=0.0.0.0
+```
+
+### コンテナ内で他のコマンド実行
+
+起動したコンテナ内で他のコマンドを実行したいとき
+(例えば，実験のためにGPUなどの環境をコンテナで構築してコンテナ内でファイルを変更しながら実験コードを実行したいとかのとき)
+は以下のコマンドを実行することでできる．
+
+```console
+docker exec -it test bash
+```
+
+### コンテナの確認
+
+```console
+docker ps
+```
+
+で起動しているdockerコンテナを確認できる．
+
+```console
+docker ps -a
+```
+
+で停止しているdockerコンテナも確認できる．
+
+### コンテナ停止
+
+```console
+docker stop container_name
+```
+
+### コンテナ削除
+
+```console
+docker rm container_name
+```
+
+### イメージ削除
+
+```console
+docker rmi iamge_name
+```
+
+### Docker Composeを利用する場合
+
+[Docker Compose](https://docs.docker.com/compose/)を利用して一連のビルドなどを簡単に行うことができる．
+
+docker composeは`docker build`, `docker run`時のオプションなどをまとめて`docker-compose.yml`に記述し，そのオプションを付けてイメージのビルド，コンテナの起動ができる．
+
+gpu flagについては現在(2020/03/13)ではdocker-composeでは`/etc/docker/daemon.json`を追加してごちゃごちゃするしか方法がないっぽい
+
+* [Support for NVIDIA GPUs under Docker Compose · Issue #6691 · docker/compose](https://github.com/docker/compose/issues/6691)
+
+上記のissue内の[コメント](https://github.com/docker/compose/issues/6691#issuecomment-571309691)にある以下のPRを利用してもいいかも．マージされてないから公式じゃないけど...
+
+* [Add device requests by Lucidiot · Pull Request #2471 · docker/docker-py](https://github.com/docker/docker-py/pull/2471)
+* [WIP: Forward device requests by yoanisgil · Pull Request #7124 · docker/compose](https://github.com/docker/compose/pull/7124)
+
+#### イメージのビルド，コンテナの起動
+
+```console
+docker-compose up
+```
+
+#### コンテナの停止，コンテナの削除，イメージの削除
+
+```console
+docker-compose down --rmi all
+```
+
+### HostOSの環境変数をdocker-compose.yml, Dockerfileに渡す方法
 
 なんでかわからないが`docker-compose.yml`内の`user: ****:****`を`user: 1000:1000`以外のUID, GIDにするとdocker内のuserが`I have no name!`になってしまう．
 しかし，UID, GIDを1000にしてしまうとHostOSのuserのUID, GIDが1000以外だとマウントしたvolumeにアクセスできなくなる．
