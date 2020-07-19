@@ -409,3 +409,24 @@ Mapping Ports for External Usage
 * Reference
   * [context - Compose file version 3 reference | Docker Documentation](https://docs.docker.com/compose/compose-file/#context)
   * [context - Compose ファイル・リファレンス | Docker-docs-ja 17.06.Beta ドキュメント](http://docs.docker.jp/compose/compose-file.html#context)
+
+## コンテナのメモリ使用量とかCPU使用量とか見たい
+
+```console
+docker stats
+```
+
+* Ref
+  * [docker stats | Docker Documentation](https://docs.docker.com/engine/reference/commandline/stats/)
+
+## 特定のディレクトリをマウントしない
+
+やり方は`volumesに定義したkey`を使って、サービス内にマウントしない みたいにする。
+
+* Ref
+  * [Dockerで特定のサブディレクトリだけホストと共有しない](http://www.denzow.me/entry/2018/03/18/104708)
+  * [docker-composeを爆速にする](https://qiita.com/shotat/items/57d049793605ffc20135)
+  * [3分くらいで分かるdockerのdata volume](https://qiita.com/damele0n/items/ac20e93749eb060fddfa)
+    * `driver: local`について書いてある
+
+

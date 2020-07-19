@@ -96,3 +96,21 @@ If the repository you want change commit message is not used by only you, you ha
 See reference Stack Overflow.
 
 - [Changing git commit message after push (given that no one pulled from remote) - Stack Overflow](https://stackoverflow.com/questions/8981194/changing-git-commit-message-after-push-given-that-no-one-pulled-from-remote)
+
+## How to download specific files from GitHub
+
+I don't know if it works because I haven't try it...
+
+```
+git archive --remote=ssh://host/pathto/repo.git HEAD README.md
+```
+
+Just use curl or wget from Raw code page.
+
+```
+curl https://raw.githubusercontent.com/pytorch/examples/master/vae/main.py
+```
+
+* Ref
+  * [Retrieve a single file from a repository](https://stackoverflow.com/a/18331440)
+
