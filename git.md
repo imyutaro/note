@@ -114,3 +114,52 @@ curl https://raw.githubusercontent.com/pytorch/examples/master/vae/main.py
 * Ref
   * [Retrieve a single file from a repository](https://stackoverflow.com/a/18331440)
 
+## Make empty branch
+
+下記のコマンドで履歴のないブランチを作成する。
+
+```
+git checkout --orphan empty-branch
+```
+
+ファイルを削除して、
+
+```
+git rm -rf .
+```
+
+コミットして、
+
+```
+git commit --allow-empty -m "root commit"
+```
+
+push。
+
+```
+git push origin empty-branch
+```
+
+* Ref
+  * [Create empty branch on GitHub](https://stackoverflow.com/a/34100189)
+
+## Make ssh key for github
+
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+* Ref
+  * [新しい SSH キーを生成して ssh-agent に追加する](https://docs.github.com/ja/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+## 複数SSH鍵を利用する
+
+```
+git config --local user.name "username"
+git config --local user.email "your_email@example.com"
+```
+
+* Ref
+  * [複数のgitアカウントを使い分ける](https://qiita.com/0084ken/items/f4a8b0fbff135a987fea)
+  * [gitconfig の基本を理解する](https://qiita.com/shionit/items/fb4a1a30538f8d335b35)
+
