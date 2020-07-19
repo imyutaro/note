@@ -114,3 +114,32 @@ curl https://raw.githubusercontent.com/pytorch/examples/master/vae/main.py
 * Ref
   * [Retrieve a single file from a repository](https://stackoverflow.com/a/18331440)
 
+## Make empty branch
+
+下記のコマンドで履歴のないブランチを作成する。
+
+```
+git checkout --orphan empty-branch
+```
+
+ファイルを削除して、
+
+```
+git rm -rf .
+```
+
+コミットして、
+
+```
+git commit --allow-empty -m "root commit"
+```
+
+push。
+
+```
+git push origin empty-branch
+```
+
+* Ref
+  * [Create empty branch on GitHub](https://stackoverflow.com/a/34100189)
+
