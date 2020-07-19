@@ -222,3 +222,14 @@ au BufRead,BufNewFile,BufFilePre *.md set filetype=markdown
 * Ref
   * [Enabling markdown highlighting in Vim - Stack Overflow](https://stackoverflow.com/a/30113820)
 
+## 開いているfileのfiletypeを見る
+
+```
+:set filetype?
+```
+
+で、どのfiletypeになっているか調べられる。
+
+* Ref
+  * [Find what filetype is loaded in vim](https://stackoverflow.com/a/2779390)
+
