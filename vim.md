@@ -109,7 +109,7 @@ brew cask install karabiner-elements
 (Escを押した時に英数キーが同時に押される設定だけ)
 (macOS Catalina, version 10.15.4)
 
-![キーボード設定](https://raw.githubusercontent.com/imyutaro/note/img/vim_karabiner.png, キーボード詳細設定)
+![キーボード設定](https://raw.githubusercontent.com/imyutaro/note/img/vim_karabiner.png "キーボード詳細設定")
 
 * Ref
   * [MacのVimでESCまたは<C-[>押した際に日本語入力をOFFにしたい（JISキーボード編）](https://yukidarake.hateblo.jp/entry/2018/06/17/231345)
