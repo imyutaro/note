@@ -170,3 +170,33 @@ For Windows `ctrl+b`.
 
 * Ref
   * [Termianl Splitting - Integrated Terminal in Visual Studio Code](https://code.visualstudio.com/docs/editor/integrated-terminal#_terminal-splitting)
+
+## Snippet
+
+Snippet Generator。超便利。
+
+* [snippet generator](https://snippet-generator.app/)
+
+Snippetに関することはRefのQiita記事がわかりやすい。
+一番使いそうなのは、`${1:equation}`みたいにすると、tabでこの位置まで飛べる（入力事項をSnippetとして設定して、tabで飛んで埋めるため）
+
+例えば、MarkdownでLatexで数式を書く際に`align`環境を使いたいと思った時は
+
+```
+"align for latex": {
+    "prefix": "align",
+    "body": [
+      "$$",
+      "\\begin{align}",
+      "  ${1:equation}",
+      "\\end{align}",
+      "$$"
+    ],
+    "description": "align for latex"
+  }
+```
+
+みたいにすれば、`align`環境のsnippetを生成して、数式の入力位置までtabで飛べる。
+
+* Ref
+  * [VSCodeのスニペットのススメ - Qiita](https://qiita.com/xx2xyyy/items/fd333368db548167f15a)
