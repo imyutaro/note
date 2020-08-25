@@ -1,45 +1,16 @@
 # SQL Coding Style
 
-ミニプロのSQLコードをリファクタリングするために
-SQLのコーディングスタイルについて調べた。
+SQLのコーディングスタイルについて調べた。あんまり、記事もなかったので、有名なスタイルとかないのかな？そこまで決めなくても、みんな同じような書き方になるから？
 
-[TOC]
-
-## SQLスタイルガイド - Qiita
-
-* [SQLスタイルガイド - Qiita](https://qiita.com/taise/items/18c14d9b01a5dfd6d35e)
-
-個人的にはCookpadのが一番いいが、予約語大文字派を考慮して、これにならってリファクタリングする。
-
-元記事が纏まってるので、ここには書かない。
-
-* 個人的な感想
-  * 基本的にはSQL Style Guideと同様。違いは以下。
-    * めんどくさすぎる予約語右揃えでなく、左揃え
-    * カラム毎に改行を入れる
-  * 大文字、小文字に関しては、Cookpadの記事の主張に同意なので、個人的には予約語を大文字で書きたくない。
-    （Shift押さなくちゃいけなくてしんどいし。）
-
-## Cookpad
-
-* [分析SQLのコーディングスタイル - クックパッド開発者ブログ](https://techlife.cookpad.com/entry/2016/11/09/000033)
-
-元記事が纏まってるので、ここには書かない。
-
-* 個人的な感想
-  * 賛同できる主張。だが予約語を大文字で書きたい勢が多くいる気がするので、今回は使わない。
-  * 以下の記述には、完全に同意。SQL Style Guideがそうだけど、めんどくさすぎる。
-    流石にめんどくさいからフォーマッターがあるのかと思ったけど、ないっぽいし...どうやってるんだ...？
-    > 4. 各句のキーワードはインデントしない
-    > 4つめの話題。ちょっとあまりに面倒くさすぎて信じられないのですが、
-    > 世の中には次のようにキーワードを右寄せにしたがる派閥も存在しています。
+個人的にはCookpadのスタイルが一番いいと思いました。
 
 ## SQL Style Guide
 
 * [SQL Style Guide](https://www.sqlstyle.guide/)
 * [SQLスタイルガイド・SQL style guide by Simon Holywell](https://www.sqlstyle.guide/ja/)
+* [treffynnon/sqlstyle.guide - GitHub](https://github.com/treffynnon/sqlstyle.guide)
 
-感想と少しまとめたものを書く。
+感想とまとめたものを書く。
 
 * 個人的な感想
   * 基本的な命名規則などは良いが、クエリのフォーマットが個人的に好きでない。
@@ -58,6 +29,49 @@ SQLのコーディングスタイルについて調べた。
 * [Why shouldn't I use "Hungarian Notation" ?](https://stackoverflow.com/a/111972)
 
 大事そうな部分だけ書く。（と思ってたらほとんど書いてしまった...）
+
+### 命名規則
+
+#### 表
+
+* 集合名詞を使用するか、望ましくはないが、複数形を使用する。例えば、employeesよりstaffが望ましい。
+* tblなどの接頭辞やハンガリアン記法による接頭辞を付けない。
+* 表に列の名前と同じ名前を付けない。その逆も同様。
+* 関連付けする表の名前に2つの表名を連結した名前を付けないようにする。cars_mechanicsよりservicesが望ましい。
+
+#### 列
+
+* 常に単数形の名前を使用する。
+* 主キーに単純にidを使うのは極力避ける。
+* 表と同じ名前の列を追加しない。逆もまた同様。
+* 固有名詞など意味のある場合を除いて、常に小文字を使用する。
+
+#### エイリアス
+
+* 何らかの方法でオブジェクトまたはその別名へ関連付けをすべきである。
+* 大雑把な方法としてエイリアスはオブジェクト名の先頭文字を使う。
+* すでに同じエイリアスがある場合は数値を追加する。
+* 常にASキーワードを記載する。
+
+```sql
+SELECT first_name AS fn
+  FROM staff AS s1
+  JOIN students AS s2
+    ON s2.mentor_id = s1.staff_num;
+```
+
+##### 統一的接尾辞
+
+* _id - 主キーである列など一意の識別子。
+* _status - flag値または任意のタイプの状況を表す（例: publication_status）。
+* _total - 値の集合の合計または総計。
+* _num - フィールドに数値が含まれていることを表す。
+* _name - first_nameのように名前を強調する。
+* _seq - 連続した数値を含む。
+* _date - 何かの日付を含む列であることを表す。
+* _tally - カウント。
+* _size - ファイルサイズや衣類などのサイズ。
+* _addr - 有形無形のデータのアドレス（例: ip_addr)。
 
 ### クエリの書き方
 
@@ -159,6 +173,85 @@ SELECT r.last_name,
           FROM champions AS c
          WHERE YEAR(championship_date) > '2008'
            AND c.confirmed = 'Y');
+```
+
+## SQLスタイルガイド - Qiita
+
+* [SQLスタイルガイド - Qiita](https://qiita.com/taise/items/18c14d9b01a5dfd6d35e)
+
+Cookpadのスタイルの次にいいと思う。
+
+* 個人的な感想
+  * 基本的にはSQL Style Guideと同様。違いは以下。
+    * めんどくさすぎる予約語右揃えでなく、左揃え
+    * カラム毎に改行を入れる
+  * 大文字、小文字に関しては、Cookpadの記事の主張に同意なので、個人的には予約語を大文字で書きたくない。
+    （Shift押さなくちゃいけなくてしんどいし。）
+
+## Cookpad
+
+[分析SQLのコーディングスタイル - クックパッド開発者ブログ](https://techlife.cookpad.com/entry/2016/11/09/000033)
+
+感想とまとめたものを書く。
+
+* 個人的な感想
+  * 賛同できる主張。だが予約語を大文字で書きたい勢が多くいる気がする、、、
+  * 以下の記述には、完全に同意。SQL Style Guideがそうだけど、めんどくさすぎる。
+    流石にめんどくさいからフォーマッターがあるのかと思ったけど、ないっぽいし...どうやってるんだ...？
+    > 4. 各句のキーワードはインデントしない
+    > 4つめの話題。ちょっとあまりに面倒くさすぎて信じられないのですが、
+    > 世の中には次のようにキーワードを右寄せにしたがる派閥も存在しています。
+
+1. 全て小文字
+2. 改行前後のカンマと演算子は次の行の先頭に置く
+3. 文末のセミコロンは単独行に置く
+4. 各句のキーワードはインデントしない
+    ```sql
+    select count(*)
+      from mst.users
+     where user_id = 5;
+    ```
+    ↑ こういうことをしない
+5. join式はfromよりもインデントする
+    ```sql
+    from
+        user_master as u
+        inner join source.score as s on u.user_id = s.user_id
+        inner join source.score_comp as c using (attr_id)
+    ```
+6. インデントはスペース4つ（with句についても言及されているが開発環境に依存することなので割愛）
+
+この記事に則ったSQLの一例。
+
+```sql
+select
+    user_id
+    , user_session_id
+    , row_number() over (
+          partition by user_id, user_session_id
+          order by log_time
+      ) as session_step
+    , log_time
+    , keywords
+from (
+    select
+        user_id
+        , user_session_id
+        , log_time
+        , trim(word1
+              ||' '|| coalesce(word2,'')
+              ||' '|| coalesce(word3,'')
+              ||' '|| coalesce(word4,'')
+              ||' '|| coalesce(word5,'')
+              ||' '|| coalesce(word6,'')
+          ) as keywords
+    from
+        user_master
+)
+where
+    not user_id is null
+    and updated_at is null
+;
 ```
 
 ## Future 株式会社 - SQLコーディング規約（Oracle）
