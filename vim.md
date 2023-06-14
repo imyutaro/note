@@ -233,3 +233,9 @@ au BufRead,BufNewFile,BufFilePre *.md set filetype=markdown
 * Ref
   * [Find what filetype is loaded in vim](https://stackoverflow.com/a/2779390)
 
+## vim内のTabでファイルを開く
+
+`:tabe filename` or `:tabedit filename`
+
+Normalモードで `gt` or `gT` でtab間を移動できる。
+
