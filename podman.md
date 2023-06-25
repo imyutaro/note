@@ -49,10 +49,12 @@ EOF
 $ docker-compose up -d
 ```
 
-メモ
+**メモ**
 
 以下のようなエラーが出た場合、URIやポートが適切に設定できていない可能性があるので、間違っていないか確認する。
 > error during connect: Get "http://%2Ftmp%2Fpodman.sock ... EOF
+
+**リンク**
 
 - standaloneのdocker compose
   - https://docs.docker.com/compose/install/standalone/
@@ -62,4 +64,7 @@ $ docker-compose up -d
     - https://medium.com/nttlabs/docker-podman-28ced4f7cb90
   - Macの場合
     - https://gist.github.com/kaaquist/dab64aeb52a815b935b11c86202761a3
+- その他
+   - https://zokibayashi.hatenablog.com/entry/2022/10/02/225120
+   - https://rheb.hatenablog.com/entry/podman3-rootless-docker-compose
 
